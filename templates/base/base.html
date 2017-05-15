@@ -8,7 +8,7 @@
 
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-	<title>{% block title %} Document {% endblock %}</title>
+	<title>{% block title %} RACII {% endblock %}</title>
 </head>
 
 <body>
@@ -26,20 +26,38 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">RACII</a>
+      <a class="navbar-brand" href="/">RACII</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 <!--        <li class="active"><a href="#">Laptops <span class="sr-only">(current)</span></a></li> -->
-        <li><a href="#">Laptops</a></li>
-        <li><a href="#">Personas</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Laptops <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Laptops<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Listar laptops</a></li>
-            <li><a href="#">Agregar laptops</a></li>
-            <li><a href="#">Editar laptops</a></li>
+            <li><a href="/laptop/listar/">Listar laptops</a></li>
+            <li><a href="/laptop/crear/">Agregar laptops</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Escuelas<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/escuela/listar_persona/">Listar personas</a></li>
+            <li><a href="/escuela/crear_persona/">Agregar personas</a></li>
+            <li class="divider"></li>
+            <li><a href="/escuela/listar_escuela/">Listar Escuelas</a></li>
+            <li><a href="/escuela/crear_escuela/">Agregar Escuelas</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Incidentes <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Listar incidentes</a></li>
+            <li><a href="#">Agregar incidentes</a></li>
             <li class="divider"></li>
             <li><a href="#">Separated link</a></li>
             <li class="divider"></li>
@@ -55,9 +73,8 @@
 
       </form>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="/admin/" class="btn btn-warning">Administrar</a></li>
         <li><a href="#" class="btn btn-danger">Salir</a></li>
-
-        
     </div>
   </div>
 </nav>

@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+		    <th>#</th>
+			<th>Nombre</th>
+			<th>Departamento</th>
+			<th>Municipio</th>
+			<th>Direccion</th>
+			<th>Telefono</th>		
+		</tr>
+
+	</thead>
+	<tbody>
+		{% if object_list %}
+		{% for escuela in object_list %}
+		<tr>
+		    <td>{{ escuela.id }}</td>
+			<td>{{ escuela.nombre }}</td>
+			<td>{{ escuela.departamento }}</td>
+			<td>{{ escuela.municipio }}</td>
+			<td>{{ escuela.direccion }}</td>
+			<td>{{ escuela.telefono }}</td>
+			
+			<td>
+				<a class="btn btn-primary btn-xs" href="#">Editar</a>
+				<a class="btn btn-danger btn-xs" href="#">Eliminar</a>
+			</td>
+		</tr>
+		{% endfor %}
+		
+		{% else %}
+			<h1>No hay registros de personas</h1>
+		{% endif %}
+	</tbody>
+</table>
+
+{% endblock %}
