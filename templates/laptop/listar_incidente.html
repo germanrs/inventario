@@ -19,7 +19,14 @@
 		    <td>{{ incidente.id }}</td>
 			<td>{{ incidente.descripcion }}</td>
 			<td>{{ incidente.laptop }}</td>
-			<td>{{ incidente.componente }}</td>
+			<td>
+			<ul> {% for componente in incidente.componente.all %}
+			<li>
+						{{componente.nombre}}
+			</li>
+			{% endfor %}
+			</td>
+
 			<td>
 				<a class="btn btn-primary btn-xs href="#">Editar</a>
 				
