@@ -23,3 +23,26 @@ class LaptopForm(forms.ModelForm):
 			'uuid': forms.TextInput(attrs={'class': 'form-control'}),
 			'modelo': forms.Select(attrs={'class': 'form-control'}),
 		}
+
+class IncidenteForm(forms.ModelForm):
+
+	class Meta:
+		model = Incidente
+
+		fields = [
+			'descripcion',
+			'laptop',
+			'componente',
+		]
+
+		labels = {
+			'descripcion': 'Descripcion del problema:',
+			'laptop': 'XO',
+			'componente': 'Componentes afectados',
+		}
+
+		widgets = {
+			'descripcion': forms.TextInput(attrs={'class':'form-control'}),
+			'laptop': forms.Select(attrs={'class': 'form-control'}),
+			'componente': forms.CheckboxSelectMultiple(),
+		}

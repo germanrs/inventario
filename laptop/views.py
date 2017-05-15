@@ -6,10 +6,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse_lazy
 
-
 from django.views.generic import ListView, CreateView
 
-from laptop.forms import LaptopForm
+from laptop.forms import LaptopForm, IncidenteForm
 from laptop.models import Laptop, Incidente
 
 # Create your views here.
@@ -30,6 +29,8 @@ class IncidenteListar(ListView):
 	model = Incidente
 	template_name = 'laptop/listar_incidente.html'
 
-class IncidenteAgregar(ListView):
+class IncidenteCrear(CreateView):
 	model = Incidente
+	form_class = IncidenteForm
 	template_name = 'laptop/crear_incidente.html'
+	success_url = reverse_lazy('laptop:incidente_listar')
