@@ -18,8 +18,6 @@ class Municipio(models.Model):
 	def __str__(self):
 		return self.nombre
 
-
-
 class Escuela(models.Model):
 	nombre = models.CharField(max_length=30)
 	departamento = models.ForeignKey(Departamento, null=True, blank=True, on_delete=models.CASCADE)
@@ -29,7 +27,6 @@ class Escuela(models.Model):
 
 	def __str__(self):
 		return self.nombre
-
 
 class Persona(models.Model):
 	ROL_E =(
