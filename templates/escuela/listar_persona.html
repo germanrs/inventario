@@ -25,9 +25,9 @@
 			<td>{{ persona.nombre }}</td>
 			<td>{{ persona.apellido }}</td>
 			<td>{{ persona.telefono }}</td>
-			<td>{{ persona.laptop }}</td>
-			<td>{{ persona.escuela }}</td>
-			<td>{{ persona.grado }}</td>
+			<td>{{ persona.laptop|default_if_none:'Ninguno' }}</td>
+			<td>{{ persona.escuela|default_if_none:'Ninguno' }}</td>
+			<td>{{ persona.grado|default_if_none:'Ninguno' }}</td>
 			
 			<td>
 				<a class="btn btn-primary btn-xs" href="#">Editar</a>
