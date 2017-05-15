@@ -25,7 +25,7 @@ class Laptop(models.Model):
 		return dict(Laptop.MODELOS_XO)[self.modelo]
 
 	class Meta:
-		ordering = ('serie',)
+		ordering = ('id',)
 
 class Componente(models.Model):
 	nombre = models.CharField(max_length=15)

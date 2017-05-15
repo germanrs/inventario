@@ -20,7 +20,7 @@ class PersonaCrear(CreateView):
 	model = Persona
 	form_class = PersonaForm
 	template_name = 'escuela/crear_persona.html'
-	success_url = reverse_lazy('persona:persona_listar')
+	success_url = reverse_lazy('escuela:listar_persona')
 
 class EscuelaListar(ListView):
 	model = Escuela
@@ -30,4 +30,4 @@ class EscuelaCrear(CreateView):
 	model = Escuela
 	form_class = EscuelaForm
 	template_name = 'escuela/crear_escuela.html'
-	success_url = reverse_lazy('escuela:escuela_listar')
+	success_url = reverse_lazy('escuela:listar_escuela')

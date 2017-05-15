@@ -23,7 +23,7 @@ class LaptopCrear(CreateView):
 	model = Laptop
 	form_class = LaptopForm
 	template_name = 'laptop/crear_laptop.html'
-	success_url = reverse_lazy('laptop:laptop_listar')
+	success_url = reverse_lazy('laptop:listar_laptop')
 
 class IncidenteListar(ListView):
 	model = Incidente
@@ -33,4 +33,4 @@ class IncidenteCrear(CreateView):
 	model = Incidente
 	form_class = IncidenteForm
 	template_name = 'laptop/crear_incidente.html'
-	success_url = reverse_lazy('laptop:incidente_listar')
+	success_url = reverse_lazy('laptop:listar_incidente')
