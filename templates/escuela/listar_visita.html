@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+		    <th>#</th>
+			<th>Fecha</th>
+			<th>Titulo</th>
+			<th>Escuela</th>
+			<th>Tipo Visita</th>
+			<th>Objetivo</th>		
+			<th>Descripcion</th>		
+			<th>Avances</th>		
+		</tr>
+
+	</thead>
+	<tbody>
+		{% if object_list %}
+		{% for visita in object_list %}
+		<tr>
+		    <td>{{ visita.id }}</td>
+			<td>{{ visita.fecha }}</td>
+			<td>{{ visita.titulo }}</td>
+			<td>{{ visita.escuela }}</td>
+			<td>{{ visita.tipo_visita }}</td>
+			<td>{{ visita.objetivo }}</td>
+			<td>{{ visita.descripcion }}</td>
+			<td>{{ visita.avances }}</td>
+			
+			<td>
+				<a class="btn btn-primary btn-xs" href="#">Editar</a>
+				<a class="btn btn-danger btn-xs" href="#">Eliminar</a>
+			</td>
+		</tr>
+		{% endfor %}
+		
+		{% else %}
+			<h1>No hay registros de personas</h1>
+		{% endif %}
+	</tbody>
+</table>
+
+{% endblock %}

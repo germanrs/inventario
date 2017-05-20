@@ -1,6 +1,8 @@
 from django import forms
 
-from escuela.models import Persona, Escuela
+from django.contrib.admin import widgets
+
+from escuela.models import Persona, Escuela, Visita
 
 class PersonaForm(forms.ModelForm):
 
@@ -60,4 +62,40 @@ class EscuelaForm(forms.ModelForm):
 			'municipio': forms.Select(attrs={'class': 'form-control'}),
 			'direccion': forms.TextInput(attrs={'class':'form-control'}),
 			'telefono': forms.TextInput(attrs={'class':'form-control'}),
+		}
+
+class VisitaForm(forms.ModelForm):
+
+	class Meta:
+		model = Visita
+
+		fields = [
+			'titulo',
+			'fecha', 
+			'escuela',
+			'tipo_visita',
+			'objetivo',
+			'descripcion',
+			'avances',
+		]
+
+		labels = {
+			'titulo': 'Titulo de la visita',
+			'fecha': 'Fecha de la visita', 
+			'escuela': 'Escuela',
+			'tipo_visita': 'Tipo de visita',
+			'objetivo': 'Objetivo de la visita',
+			'descripcion': 'Descripcion de la visita',
+			'avances': 'Avances encontrados',
+		}
+
+		widgets = {
+			'titulo':  forms.TextInput(attrs={'class':'form-control'}),
+			'fecha':  forms.DateInput(format='%d/%m/%Y'),
+			'escuela': forms.Select(attrs={'class':'form-control'}),
+			'tipo_visita': forms.Select(attrs={'class':'form-control'}),
+			'objetivo': forms.TextInput(attrs={'class':'form-control'}),
+			'descripcion':forms.TextInput(attrs={'class':'form-control'}),
+			'avances': forms.TextInput(attrs={'class':'form-control'}),
+			
 		}

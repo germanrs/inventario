@@ -53,3 +53,23 @@ class Persona(models.Model):
 
 	def grado_detalle(self):
 		return dict(Persona.ROL_E)[self.grado]
+
+class Visita(models.Model):
+	T_VISITA = (
+		('1', 'Educativa'),
+		('2', 'Tecnico'),
+		('3', 'Logistico'),
+		)
+	titulo = models.CharField(max_length=30)
+	fecha = models.DateField()
+	escuela = models.ForeignKey(Escuela, null=True, blank=False, on_delete=models.CASCADE)
+	tipo_visita = models.CharField(max_length=1, choices=T_VISITA, blank=False)
+	objetivo = models.CharField(max_length=30)
+	descripcion = models.CharField(max_length=250)
+	avances = models.CharField(max_length=100)
+
+	def __str__(self):
+		return '{} {} {}'.format(self.fecha, self.titulo, self.escuela, self.tipo_visita, )
+
+	def visita_detalle(self):
+		return dict(tipo_visita.T_VISITA)[self.tipo_visita]
