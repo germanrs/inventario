@@ -24,6 +24,12 @@ class Laptop(models.Model):
 	def modelo_detalle(self):
 		return dict(Laptop.MODELOS_XO)[self.modelo]
 
+	#def get_persona(self):
+	#	Try:
+	#		return Persona.objects.get(pk=self.forenea)
+	#	except:
+	#		return None
+
 	class Meta:
 		ordering = ('id',)
 

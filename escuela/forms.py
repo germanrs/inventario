@@ -1,7 +1,5 @@
 from django import forms
 
-from django.contrib.admin import widgets
-
 from escuela.models import Persona, Escuela, Visita
 
 class PersonaForm(forms.ModelForm):
@@ -95,7 +93,7 @@ class VisitaForm(forms.ModelForm):
 			'escuela': forms.Select(attrs={'class':'form-control'}),
 			'tipo_visita': forms.Select(attrs={'class':'form-control'}),
 			'objetivo': forms.TextInput(attrs={'class':'form-control'}),
-			'descripcion':forms.TextInput(attrs={'class':'form-control'}),
+			'descripcion':forms.Textarea(attrs={'class':'form-control'}),
 			'avances': forms.TextInput(attrs={'class':'form-control'}),
 			
 		}
