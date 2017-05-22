@@ -73,3 +73,7 @@ class Visita(models.Model):
 
 	def visita_detalle(self):
 		return dict(tipo_visita.T_VISITA)[self.tipo_visita]
+
+#class Conectividad(models.Model):
+
+
