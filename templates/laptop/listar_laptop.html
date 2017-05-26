@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<a class="btn btn-success btn-xs" href="{% url 'laptop:crear_laptop' %}">Agregar</a>
+
 <table class="table table-striped table-hover">
 	<thead>
 		<tr>
@@ -29,8 +31,8 @@
 			<td style="text-align:center">{{ laptop.uuid|upper}}</td>
 						
 			<td>
-				<a class="btn btn-primary btn-xs" href="#">Editar</a>
-				<a class="btn btn-danger btn-xs" href="#">Eliminar</a>
+				<a class="btn btn-primary btn-xs" href="{% url 'laptop:editar_laptop' laptop.id %}">Editar</a>
+				<a class="btn btn-danger btn-xs" href="{% url 'laptop:borrar_laptop' laptop.id %}">Eliminar</a>
 			</td>
 
 		</tr>

@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse_lazy
 
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from laptop.forms import LaptopForm, IncidenteForm
 from laptop.models import Laptop, Incidente
@@ -37,6 +37,17 @@ class LaptopCrear(CreateView):
 	template_name = 'laptop/crear_laptop.html'
 	success_url = reverse_lazy('laptop:listar_laptop')
 
+class LaptopEditar(UpdateView):
+	model = Laptop
+	form_class = LaptopForm
+	template_name = 'laptop/crear_laptop.html'
+	success_url = reverse_lazy('laptop:listar_laptop')
+
+class LaptopBorrar(DeleteView):
+	model = Laptop
+	template_name = 'laptop/borrar_laptop.html'
+	success_url = reverse_lazy('laptop:listar_laptop')
+
 class IncidenteListar(ListView):
 	model = Incidente
 	template_name = 'laptop/listar_incidente.html'
@@ -45,4 +56,15 @@ class IncidenteCrear(CreateView):
 	model = Incidente
 	form_class = IncidenteForm
 	template_name = 'laptop/crear_incidente.html'
+	success_url = reverse_lazy('laptop:listar_incidente')
+
+class IncidenteEditar(UpdateView):
+	model = Incidente
+	form_class = IncidenteForm
+	template_name = 'laptop/crear_incidente.html'
+	success_url = reverse_lazy('laptop:listar_incidente')
+
+class IncidenteBorrar(DeleteView):
+	model = Incidente
+	template_name = 'laptop/borrar_incidente.html'
 	success_url = reverse_lazy('laptop:listar_incidente')
