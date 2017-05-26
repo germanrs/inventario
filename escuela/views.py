@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse_lazy
 
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from escuela.forms import PersonaForm, EscuelaForm, VisitaForm
 from escuela.models import Persona, Escuela, Visita
@@ -20,6 +20,17 @@ class PersonaCrear(CreateView):
 	model = Persona
 	form_class = PersonaForm
 	template_name = 'escuela/crear_persona.html'
+	success_url = reverse_lazy('escuela:listar_persona')
+
+class PersonaEditar(UpdateView):
+	model = Persona
+	form_class = PersonaForm
+	template_name = 'escuela/crear_persona.html'
+	success_url = reverse_lazy('escuela:listar_persona')
+
+class PersonaBorrar(DeleteView):
+	model = Persona
+	template_name = 'escuela/borrar_persona.html'
 	success_url = reverse_lazy('escuela:listar_persona')
 
 class EscuelaListar(ListView):

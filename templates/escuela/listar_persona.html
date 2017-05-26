@@ -30,8 +30,8 @@
 			<td>{{ persona.grado|default_if_none:'Ninguno' }}</td>
 			
 			<td>
-				<a class="btn btn-primary btn-xs" href="#">Editar</a>
-				<a class="btn btn-danger btn-xs" href="#">Eliminar</a>
+				<a class="btn btn-primary btn-xs" href="{% url 'escuela:editar_persona' persona.id %}">Editar</a>
+				<a class="btn btn-danger btn-xs" href="{% url 'escuela:borrar_persona' persona.id %}">Eliminar</a>
 			</td>
 		</tr>
 		{% endfor %}
