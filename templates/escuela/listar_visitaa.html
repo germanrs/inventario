@@ -41,14 +41,12 @@ $( document ).ready(function() {
 
 var ctx = document.getElementById("myChart").getContext("2d");
 var myLineChart = new Chart(ctx).Line(data, {
-var options = Chart.defaults.global = {
-  responsive: true,
-  maintainAspectRatio: true,
-  tooltipFillColor : "rgba(0, 160,0,0.8)",
-  bezierCurve: false
-  });
+        responsive: false,
+        maintainAspectRatio: false,
+    tooltipFillColor : "rgba(0, 160,0,0.8)",
+    bezierCurve: false
 
+    });
 });
-
 </script>
 {% endblock %}

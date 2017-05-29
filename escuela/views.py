@@ -43,9 +43,13 @@ class EscuelaCrear(CreateView):
 	template_name = 'escuela/crear_escuela.html'
 	success_url = reverse_lazy('escuela:listar_escuela')
 
-class VisitaListar(ListView):
+class VisitaListarA(ListView):
 	model = Visita
 	template_name = 'escuela/listar_visita.html'
+
+class VisitaListarB(ListView):
+    model = Visita
+    template_name = 'escuela/listar_visitaa.html'
 
 class VisitaCrear(CreateView):
 	model = Visita
