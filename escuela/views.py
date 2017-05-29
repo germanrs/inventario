@@ -45,7 +45,7 @@ class EscuelaCrear(CreateView):
 
 class VisitaListar(ListView):
 	model = Visita
-	template_name = 'escuela/listar_visitaa.html'
+	template_name = 'escuela/listar_visita.html'
 
 class VisitaCrear(CreateView):
 	model = Visita
