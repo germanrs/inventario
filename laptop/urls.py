@@ -5,7 +5,8 @@ from laptop.views import index, LaptopListar, LaptopCrear, LaptopEditar, LaptopB
 						 IncidenteListar, IncidenteCrear, IncidenteEditar, IncidenteBorrar
 
 urlpatterns = [
-    url(r'^$', index, name='index'),
+#    url(r'^$', index, name='index'),
+    url(r'^$', login_required(LaptopListar.as_view()), name='listar_laptop'),
     url(r'^listar/', login_required(LaptopListar.as_view()), name='listar_laptop'),
     url(r'^crear/', login_required(LaptopCrear.as_view()), name='crear_laptop'),
     
