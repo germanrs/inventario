@@ -1,37 +1,64 @@
 {% extends 'base/base.html' %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 
 {% block title %}
 RACII
 {% endblock %}
-{% block navbar%}
-{% endblock %}
-{% block content %}
-<form method="post">
-	{% csrf_token %}
-	 <div class="row">
-    	<div class="col-md-6 col-md-offset-3">
-    		<div class="form-group">
-        		<label for="username">Nombre de usuario:</label>
-        		<input class="form-control" type="text" name="username">
-    	   </div>
-        </div>
-    </div>    
-    <div class="row">
-    	<div class="col-md-6 col-md-offset-3">
-    		<div class="form-group">
-        		<label for="username">Contraseña:</label>
-        		<input class="form-control" type="password" name="password">
-    	   </div>
-        </div>
-    </div>
-    <div class="row">
-    	<div class="col-md-6 col-md-offset-3">
-    		<div class="form-group">
-                <a href="#">Olvidé mi contraseña</a>
-        		<input class="btn btn-primary" type="submit" value="Ingresar">
-    	   </div>
-        </div>
-    </div>
-</form>
 
+{% block navbar%}
+
+{% endblock %}
+
+{% block content %}
+<section class="landing-section landing-main">
+<div class="landing-section-content">
+            
+<form method="post">
+{% csrf_token %}
+
+<div class="row">
+    <div class="col-md-12 col-md-offset-3">
+        <div class="form-group">
+            <label for="username">Nombre de usuario:</label>
+            <input class="form-control" type="text" name="username">
+        </div>
+    </div>
+</div>    
+    
+<div class="row">
+    <div class="col-md-12 col-md-offset-3">
+        <div class="form-group">
+            <label for="username">Contraseña:</label>
+            <input class="form-control" type="password" name="password">
+        </div>
+    </div>
+</div>
+    
+<div class="row text-center">
+    <div class="col-md-12 col-md-offset-3">
+        <div class="form-group ">
+            <input class="btn btn-primary center-block" type="submit" value="Ingresar">
+        </div>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-md-12 col-md-offset-3">
+        <div class="form-group">
+            <a href="#">Olvidé mi contraseña</a>
+        </div>
+    </div>
+</div>
+
+</form>
+</div>
+</section>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}
