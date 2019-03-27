@@ -19,7 +19,9 @@
 }
 
 .landing-main {
-  background: url("../images/olpcintro.jpg") fixed;
+  background: url("../images/olpcintro.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
-
