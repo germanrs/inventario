@@ -18,6 +18,10 @@ admin.site.register(Incidente)
 
 admin.site.register(Componente)
 
-@admin.register(Laptop)
-class LaptopAdmin(ImportExportModelAdmin):
-    pass
+class LaptopAdmin(admin.ModelAdmin):
+    list_display = ('id', 'serie', 'uuid', 'modelo')
+admin.site.register(Laptop, LaptopAdmin)
+
+#@admin.register(Laptop)
+#class LaptopAdmin(ImportExportModelAdmin):
+#    pass
