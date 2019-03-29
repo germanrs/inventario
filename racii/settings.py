@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'escuela',
     'laptop',
     'donante',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,11 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 LOGIN_REDIRECT_URL = reverse_lazy('laptop:listar_laptop')
 
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+# Modulo de importar - exportar
+# https://simpleisbetterthancomplex.com/packages/2016/08/11/django-import-export.html
+IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
