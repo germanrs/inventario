@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^laptop/', include('laptop.urls', namespace='laptop')),
     url(r'^escuela/', include('escuela.urls', namespace='escuela')),
+    url(r'^donante/', include('donante.urls', namespace='donante')),
     url(r'^accounts/login/', login, {'template_name':'index.html'}, name='login'),
     url(r'^logout/', logout_then_login, name='logout'),
 ]

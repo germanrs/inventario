@@ -18,6 +18,7 @@
 	</thead>
 	<tbody>
 		{% if object_list %}
+		<ol>
 		{% for escuela in object_list %}
 		<tr>
 		    <td>{{ escuela.id }}</td>
@@ -26,14 +27,13 @@
 			<td>{{ escuela.municipio }}</td>
 			<td>{{ escuela.direccion }}</td>
 			<td>{{ escuela.telefono }}</td>
-			
 			<td>
-				<a class="btn btn-primary btn-xs" href="#">Editar</a>
-				<a class="btn btn-danger btn-xs" href="#">Eliminar</a>
+				<a class="btn btn-primary btn-xs" href="/admin/escuela">Editar</a>
 			</td>
 		</tr>
 		{% endfor %}
-		
+		</ol>
+
 		{% else %}
 			<h1>No hay registros de personas</h1>
 		{% endif %}

@@ -12,7 +12,8 @@ class Donante(models.Model):
 	telefono = models.CharField(max_length=10)
 	email = models.EmailField(max_length=30,blank=True)
 	escuela = models.ForeignKey(Escuela, null=True, blank=True, on_delete=models.CASCADE)
+	donacion = models.FloatField(default=0)
 
 	def __str__(self):
-		return '{} {}'.format(self.nombre, self.escuela,)
+		return '{} {}'.format(self.nombre, self.escuela, self.donacion)
 		
