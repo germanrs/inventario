@@ -12,6 +12,8 @@ from laptop.forms import LaptopForm, IncidenteForm
 from laptop.models import Laptop, Incidente
 from escuela.models import Persona
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 # Create your views here.
 def index(request):
 	return render(request, 'base/base.html')
@@ -19,6 +21,9 @@ def index(request):
 class LaptopListar(ListView):
 	model = Laptop
 	template_name = 'laptop/listar_laptop.html'
+	context_object_name = 'laptops'  # Default: object_list
+	paginate_by = 10
+	queryset = Laptop.objects.all()  
 
 #class LaptopListar(DetailView):
 	
