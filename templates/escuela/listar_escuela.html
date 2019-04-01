@@ -21,7 +21,7 @@
 		<ol>
 		{% for escuela in object_list %}
 		<tr>
-		    <td>{{ escuela.id }}</td>
+		    <td>{{ forloop.counter }}</td>
 			<td>{{ escuela.nombre }}</td>
 			<td>{{ escuela.departamento }}</td>
 			<td>{{ escuela.municipio }}</td>
