@@ -5,7 +5,7 @@
 <a class="btn btn-success btn-xs" href="{% url 'donante:crear_donante' %}">Agregar</a>
 
 <table class="table table-striped table-hover">
-	<thead>ssh
+	<thead>
 		<tr>
 		    <th>#</th>
 			<th>Nombre</th>
@@ -13,7 +13,7 @@
 			<th>Telefono</th>
 			<th>Email</th>
 			<th>Escuela</th>
-			<th>Donacion</th>	
+			<th>Donacion</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,12 +28,12 @@
 			<td>{{ donante.escuela }}</td>
 			<td>{{ donante.donacion }}</td>
 			<td>
-				<a class="btn btn-primary btn-xs" href="{% url 'escuela:editar_donante' donante.id %}">Editar</a> 
+				<a class="btn btn-primary btn-xs" href="{% url 'escuela:editar_donante' donante.id %}">Editar</a>
 				<a class="btn btn-danger btn-xs" href="{% url 'escuela:borrar_donante' donante.id %}">Eliminar</a>
 			</td>
 		</tr>
 		{% endfor %}
-		
+
 		{% else %}
 			<h1>No hay registros de donantes</h1>
 		{% endif %}

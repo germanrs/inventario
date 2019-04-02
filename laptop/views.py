@@ -56,6 +56,9 @@ class LaptopBorrar(DeleteView):
 class IncidenteListar(ListView):
 	model = Incidente
 	template_name = 'laptop/listar_incidente.html'
+	context_object_name = 'incidentes'  # Default: object_list
+	paginate_by = 10
+	queryset = Incidente.objects.all()  
 
 class IncidenteCrear(CreateView):
 	model = Incidente

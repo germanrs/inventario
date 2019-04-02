@@ -15,8 +15,13 @@ RACII
 {% endblock %}
 
 {% block content %}
+
 <section class="landing-section landing-main">
+
+    <h1>Bienvenidos a RACII</h1>
+
     <div class="landing-section-content">
+
         <form method="post">
             {% csrf_token %}
             <div class="container">
@@ -29,15 +34,15 @@ RACII
                             <label for="username">Contraseña:</label>
                             <input class="form-control text-center" type="password" placeholder="Ingrese su contraseña" name="password">
                         </div><!-- form-group text-center -->
-                    </div><!-- /.col-lg-4 -->   
+                    </div><!-- /.col-lg-4 -->
                 </div><!-- /.row -->
 
                 <div class="form-group">
                     <input class="btn btn-primary center-block" type="submit" value="Ingresar">
                 </div>
-                
+
                 <div class="row text-center">
-                        <a href="#">Olvidé mi contraseña</a>
+                        <a href="#" style="color:#f2ad46;">Olvidé mi contraseña</a>
                 </div>
             </div><!-- container -->
         </form>
