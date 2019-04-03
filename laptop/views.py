@@ -16,19 +16,19 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def index(request):
-	return render(request, 'base/base.html')
+	return render(request, 'base/base2.html')
 
 class LaptopListar(ListView):
 	model = Laptop
 	template_name = 'laptop/listar_laptop.html'
 	context_object_name = 'laptops'  # Default: object_list
 	paginate_by = 10
-	queryset = Laptop.objects.all()  
+	queryset = Laptop.objects.all()
 
 #class LaptopListar(DetailView):
-	
+
 #	model = Laptop
-	
+
 #	template_name = 'laptop/listar_laptop.html'
 
 #	def get_context_data(self, **kwargs):
@@ -58,7 +58,7 @@ class IncidenteListar(ListView):
 	template_name = 'laptop/listar_incidente.html'
 	context_object_name = 'incidentes'  # Default: object_list
 	paginate_by = 10
-	queryset = Incidente.objects.all()  
+	queryset = Incidente.objects.all()
 
 class IncidenteCrear(CreateView):
 	model = Incidente
