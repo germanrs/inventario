@@ -1,43 +1,84 @@
 {% extends 'base/base2.html' %}
 
 {% block content %}
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 
-<a class="btn btn-success btn-xs" href="{% url 'escuela:crear_persona' %}">Agregar</a>
+<form class="form-inline">
+	<div class="form-group">
+			<a href="{% url 'escuela:crear_persona' %}" class="btn btn-primary btn-xs" role="button">Agregar</a>
+      <a href="/admin/escuela/persona/import" class="btn btn-success btn-xs" role="button"> Importar masivamente</a>
+			<input class="form-control input-sm" id="myInput" type="text" placeholder="Filtrar..">
+	</div>
+</form>
 
-<table class="table table-striped table-hover">
+{% if object_list %}
+<table class="table table-bordered table-hover">
 	<thead>
-		<tr>
-			<th>#</th>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Telefono</th>
-			<th>XO Asignada</th>
-			<th>Escuela</th>
-			<th>Grado</th>
+		<tr class="info">
+			<th style="text-align:center">#</th>
+			<th style="text-align:center">Nombre</th>
+			<th style="text-align:center">Apellido</th>
+			<th style="text-align:center">Telefono</th>
+			<th style="text-align:center">XO Asignada</th>
+			<th style="text-align:center">Escuela</th>
+			<th style="text-align:center">Grado</th>
+			<th style="text-align:center">Acciones</th>
 		</tr>
 	</thead>
-	<tbody>
-		{% if object_list %}
+
+  <tbody id="myTable">
+    <ol>
 		{% for persona in object_list %}
 		<tr>
-			<td>{{ forloop.counter }}</td>
-			<td>{{ persona.nombre }}</td>
-			<td>{{ persona.apellido }}</td>
-			<td>{{ persona.telefono }}</td>
-			<td>{{ persona.laptop|default_if_none:'Ninguno' }}</td>
-			<td>{{ persona.escuela|default_if_none:'Ninguno' }}</td>
-			<td>{{ persona.grado|default_if_none:'Ninguno' }}</td>
-			<td>
+			<td style="text-align:center">{{ forloop.counter }}</td>
+			<td style="text-align:center">{{ persona.nombre }}</td>
+			<td style="text-align:center">{{ persona.apellido }}</td>
+			<td style="text-align:center">{{ persona.telefono }}</td>
+			<td style="text-align:center">{{ persona.laptop|default_if_none:'Ninguno' }}</td>
+			<td style="text-align:center">{{ persona.escuela|default_if_none:'Ninguno' }}</td>
+			<td style="text-align:center">{{ persona.grado|default_if_none:'Ninguno' }}</td>
+		<td align="center">
 				<a class="btn btn-primary btn-xs" href="{% url 'escuela:editar_persona' persona.id %}">Editar</a>
 				<a class="btn btn-danger btn-xs" href="{% url 'escuela:borrar_persona' persona.id %}">Eliminar</a>
 			</td>
 		</tr>
 		{% endfor %}
-
+    </ol>
 		{% else %}
 		<h1>No hay registros de personas</h1>
 		{% endif %}
 	</tbody>
 </table>
+
+{% if is_paginated %}
+  <ul class="pagination pagination-sm">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
 
 {% endblock %}

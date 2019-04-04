@@ -15,6 +15,9 @@ from escuela.models import Persona, Escuela, Visita
 class PersonaListar(ListView):
 	model = Persona
 	template_name = 'escuela/listar_persona.html'
+	context_object_name = 'personas'  # Default: object_list
+	paginate_by = 10
+	queryset = Persona.objects.all()
 
 class PersonaCrear(CreateView):
 	model = Persona
