@@ -22,7 +22,8 @@ $(document).ready(function(){
 </form>
 
 {% if object_list %}
-<table class="table table-bordered table-striped">
+<table class="table table-bordered  table-hover">
+
 	<thead>
 		<tr class="info">
 		  <th style="text-align:center">#</th>
@@ -45,7 +46,7 @@ $(document).ready(function(){
 			<td style="text-align:center">{{ laptop.persona.grado|default_if_none:'Ninguno'}}</td>
 			<td style="text-align:center">{{ laptop.modelo_detalle }}</td>
 			<td style="text-align:center">{{ laptop.uuid|upper}}</td>
-			<td>
+			<td align="center">
 				<a class="btn btn-primary btn-xs" href="{% url 'laptop:editar_laptop' laptop.id %}">Editar</a>
 				<a class="btn btn-danger btn-xs" href="{% url 'laptop:borrar_laptop' laptop.id %}">Eliminar</a>
 			</td>
