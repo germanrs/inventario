@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+import datetime
 
 # Create your models here.
 
@@ -39,10 +40,13 @@ class Componente(models.Model):
 		return self.nombre
 
 class Incidente(models.Model):
+	created_at = models.DateTimeField(auto_now_add=True)
 	descripcion = models.CharField(max_length=30)
 	laptop = models.ForeignKey(Laptop, blank=True)
 	componente = models.ManyToManyField(Componente, blank=True)
 
-	def __str__(self):
-		return '{} {} {}'.format(self.descripcion, self.laptop, self.componente)
+	def f_creacion(self):
+		return self.created_at.strftime('%B %d %Y')
 
+	def __str__(self):
+		return '{} {} {} {}'.format(self.created_at, self.descripcion, self.laptop, self.componente)

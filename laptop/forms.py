@@ -36,9 +36,9 @@ class IncidenteForm(forms.ModelForm):
 		]
 
 		labels = {
-			'descripcion': 'Descripcion del problema:',
-			'laptop': 'XO',
-			'componente': 'Componentes afectados',
+			'descripcion': '',
+			'laptop': '',
+			'componente': '',
 		}
 
 		widgets = {

@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'laptop',
     'donante',
     'import_export',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

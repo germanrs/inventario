@@ -47,8 +47,8 @@ $(document).ready(function(){
 			<td style="text-align:center">{{ laptop.modelo_detalle }}</td>
 			<td style="text-align:center">{{ laptop.uuid|upper}}</td>
 			<td align="center">
-				<a class="btn btn-primary btn-xs" href="{% url 'laptop:editar_laptop' laptop.id %}">Editar</a>
-				<a class="btn btn-danger btn-xs" href="{% url 'laptop:borrar_laptop' laptop.id %}">Eliminar</a>
+				<a class="btn btn-primary btn-xs" href="{% url 'laptop:editar_laptop' laptop.id %}"> Editar</a>
+            	<a class="btn btn-danger btn-xs" href="{% url 'laptop:borrar_laptop' laptop.id %}">Eliminar</a>
 			</td>
 		</tr>
 		{% endfor %}

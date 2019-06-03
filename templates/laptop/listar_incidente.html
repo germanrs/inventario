@@ -21,10 +21,11 @@
 		    <td>{{ forloop.counter }}</td>
 			<td>{{ incidente.descripcion }}</td>
 			<td>{{ incidente.laptop }}</td>
+			<td>{{ incidente.created_at|date:"d M Y h:i a" }}</td>
 			<td>
 			<ul> {% for componente in incidente.componente.all %}
 			<li>
-						{{componente.nombre}}
+				{{componente.nombre}}
 			</li>
 			{% endfor %}
 			</td>

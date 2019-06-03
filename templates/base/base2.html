@@ -5,7 +5,9 @@
   <meta charset="utf-8">
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
+<!-- -->
 
+<!-- -->
   {% block extrastatic %}
   {% endblock %}
 
@@ -36,7 +38,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{% url 'laptop:listar_laptop' %}">RACII</a>
+        <a class="navbar-brand" href="{% url 'laptop:listar_laptop' %}">
+            <!--<img src="http://lavidau.files.wordpress.com/2009/09/olpc-logo.jpg" width="50" height="40">Inventario</a>-->
+            Inventario</a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -46,12 +50,17 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fas fa-laptop"></span>  Laptops<span class="caret "></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/laptop/listar/">Listar laptops</a></li>
+              <li class="divider"></li>
               <li><a href="/laptop/crear/">Agregar laptops</a></li>
-              <li class="divider"></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fas fa-bug"></span>  Incidentes<span class="caret "></span></a>
+            <ul class="dropdown-menu" role="menu">
               <li><a href="/laptop/listar_incidente/">Listar incidentes</a></li>
-              <li><a href="/laptop/crear_incidente/">Agregar incidentes</a></li>
               <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
+              <li><a href="/laptop/crear_incidente/">Agregar incidentes</a></li>
             </ul>
           </li>
 
@@ -59,9 +68,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fas fa-users"></span>  Personas<span class="caret "></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/escuela/listar_persona/">Listar personas</a></li>
-              <li><a href="/escuela/crear_persona/">Agregar personas</a></li>
               <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
+              <li><a href="/escuela/crear_persona/">Agregar personas</a></li>
             </ul>
           </li>
 
@@ -71,6 +79,7 @@
             <ul class="dropdown-menu" role="menu">
 
               <li><a href="/escuela/listar_escuela/">Listar Escuelas</a></li>
+              <li class="divider"></li>
               <li><a href="/escuela/crear_escuela/">Agregar Escuelas</a></li>
             </ul>
           </li>
@@ -78,21 +87,18 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fas fa-briefcase"></span>	Donantes <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/escuela/listar_donante/">Listar Donantes</a></li>
+              <li class="divider"></li>
               <li><a href="/escuela/crear_donante/">Agregar Donantes</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
             </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fas fa-clipboard-list"></span>	Logística<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/escuela/crear_visita/">Agregar Visita</a></li>
-              <li><a href="/escuela/listar_visitaa/">Listar Visita A</a></li>
-              <li><a href="/escuela/listar_visitab/">Listar Visita B</a></li>
               <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
+              <li><a href="/escuela/listar_visitaa/">Listar Visita A</a></li>
+              <li class="divider"></li>
+              <li><a href="/escuela/listar_visitab/">Listar Visita B</a></li>
             </ul>
           </li>
         </ul>
