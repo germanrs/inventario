@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
