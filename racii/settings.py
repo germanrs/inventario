@@ -44,9 +44,10 @@ INSTALLED_APPS = [
     'donante',
     'import_export',
     'crispy_forms',
+    'rest_framework',
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 

@@ -6,10 +6,16 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse_lazy
 
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView
 
 from escuela.forms import PersonaForm, EscuelaForm, VisitaForm
 from escuela.models import Persona, Escuela, Visita
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+from django.contrib.auth import get_user_model
+from laptop.models import Laptop
 
 # Create your views here.
 class PersonaListar(ListView):
@@ -46,16 +52,44 @@ class EscuelaCrear(CreateView):
 	template_name = 'escuela/crear_escuela.html'
 	success_url = reverse_lazy('escuela:listar_escuela')
 
-class VisitaListarA(ListView):
-	model = Visita
-	template_name = 'escuela/listar_visita.html'
-
-class VisitaListarB(ListView):
-    model = Visita
-    template_name = 'escuela/listar_visitaa.html'
+#class VisitaListarA(ListView):
+#	model = Visita
+#	template_name = 'escuela/listar_visita.html'
 
 class VisitaCrear(CreateView):
 	model = Visita
 	form_class = VisitaForm
 	template_name = 'escuela/crear_visita.html'
 	success_url = reverse_lazy('escuela:listar_visita')
+
+User = get_user_model()
+
+class VisitaListarA(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'escuela/listar_visita.html')
+
+class Reporte1(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'escuela/charts.html')
+
+class ChartData(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        qs_xo_1 = Laptop.objects.filter(modelo=1).count()
+        qs_xo_2 = Laptop.objects.filter(modelo=2).count()
+        qs_xo_3 = Laptop.objects.filter(modelo=3).count()
+        qs_xo_4 = Laptop.objects.filter(modelo=4).count()
+        qs_nl3 = Laptop.objects.filter(modelo=5).count()
+
+#        qs_escuela_1 = Persona.objects.filter(escuela='1').count()
+#        qs_escuela_2 = Persona.objects.filter(escuela='2').count()
+#        qs_escuela_3 = Persona.objects.filter(escuela='3').count()
+# 		 qs_count = User.objects.all().count()
+
+        data = {
+            "labels": ["XO-1", "XO-1.5", "XO-1.75", "XO-4", "NL3"],
+            "data": [qs_xo_1, qs_xo_2, qs_xo_3, qs_xo_4, qs_nl3],
+        }
+        return Response(data)

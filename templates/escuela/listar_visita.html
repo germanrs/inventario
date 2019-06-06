@@ -1,31 +1,24 @@
 {% extends 'base/base2.html' %}
 
 {% block content %}
-<!-- https://simpleisbetterthancomplex.com/tutorial/2018/04/03/how-to-integrate-highcharts-js-with-django.html -->
-<div id="container"></div>
-  <script src="https://code.highcharts.com/highcharts.src.js"></script>
-  <script>
-    Highcharts.chart('container', {
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'Historic World Population by Region'
-        },
-        xAxis: {
-            categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
-        },
-        series: [{
-            name: 'Year 1800',
-            data: [107, 31, 635, 203, 2]
-        }, {
-            name: 'Year 1900',
-            data: [133, 156, 947, 408, 6]
-        }, {
-            name: 'Year 2012',
-            data: [1052, 954, 4250, 740, 38]
-        }]
-    });
-  </script>
+<div class="starter-template">
+</div>
 
-{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+        <canvas id="myChart" width="400" height="400">
+            <script>
+                $(document).ready(function(){
+                {% block jquery %}{% endblock %}
+                })
+            </script>
+        </canvas>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+
+</main><!-- /.container -->
+{% endblock content %}

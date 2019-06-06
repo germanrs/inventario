@@ -5,6 +5,13 @@
   <meta charset="utf-8">
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"
+    integrity="sha256-o8aByMEvaNTcBsw94EfRLbBrJBI+c3mjna/j4LrfyJ8="
+    crossorigin="anonymous">
+  </script>
+
 <!-- -->
 
 <!-- -->
@@ -20,7 +27,7 @@
   crossorigin='anonymous'>
   <title>
     {% block title %}
-    OLPC Inventario 
+    OLPC Inventario
     {% endblock %}
   </title>
 </head>
@@ -96,9 +103,11 @@
             <ul class="dropdown-menu" role="menu">
               <li><a href="/escuela/crear_visita/">Agregar Visita</a></li>
               <li class="divider"></li>
-              <li><a href="/escuela/listar_visitaa/">Listar Visita A</a></li>
+              <li><a href="/escuela/reporte1">Inventario de laptops</a></li>
+<!--
               <li class="divider"></li>
               <li><a href="/escuela/listar_visitab/">Listar Visita B</a></li>
+-->
             </ul>
           </li>
         </ul>
