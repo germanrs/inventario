@@ -21,6 +21,11 @@ from django.contrib.auth.views import login, logout_then_login, password_reset, 
 # password reset
 from django.contrib.auth import views as auth_views
 
+import django.views.defaults
+
+def custom_page_not_found(request):
+    return django.views.defaults.page_not_found(request, None)
+
 
 urlpatterns = [
     url(r'^', include('laptop.urls', namespace='index')),
@@ -30,6 +35,8 @@ urlpatterns = [
     url(r'^donante/', include('donante.urls', namespace='donante')),
     url(r'^accounts/login/', login, {'template_name':'index.html'}, name='login'),
     url(r'^logout/', logout_then_login, name='logout'),
+    #url(r'^404/$', django.views.defaults.page_not_found, ),
+    url(r'^404/', custom_page_not_found),
     # password_reset
     #url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),
     #url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),

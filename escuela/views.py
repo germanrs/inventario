@@ -72,6 +72,8 @@ class Reporte1(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'escuela/charts.html')
 
+
+
 class ChartData(APIView):
     authentication_classes = []
     permission_classes = []

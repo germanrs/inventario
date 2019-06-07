@@ -1,0 +1,36 @@
+{% extends 'base/base2.html' %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.lumen.min.css' %}">
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/404.css' %}">
+{% endblock %}
+
+
+{% block title %}
+RACII
+{% endblock %}
+
+{% block navbar%}
+
+{% endblock %}
+
+{% block content %}
+<section class=" landing-main">
+
+    <div id="notfound">
+        <div class="notfound">
+            <div class="notfound-404">
+                <h1>Oops!</h1>
+            </div>
+            <h2>404 - Pagina no encontrada</h2>
+            <p>La pagina que estabas buscando, ha sido removida o esta temporalmente deshabilitada.</p>
+            <a href="{% url 'laptop:listar_laptop' %}">Regresar al inicio</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
