@@ -15,7 +15,7 @@ class Laptop(models.Model):
 		('5', 'NL3'),
 	)
 	serie = models.CharField(max_length=11)
-	uuid = models.CharField(max_length=32)
+	uuid = models.CharField(max_length=36)
 	modelo = models.CharField(max_length=1, choices=MODELOS_XO)
 
 	def __str__(self):
