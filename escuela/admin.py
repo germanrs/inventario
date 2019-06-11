@@ -35,8 +35,8 @@ class PersonaResource(resources.ModelResource):
     	widget=ForeignKeyWidget(Escuela, 'nombre'))
 
     class Meta:
-    	# fields = ('id', 'nombre', 'apellido', 'telefono', 'laptop', 'escuela', 'grado',)
         model = Persona
+        fields = ('id', 'nombre', 'apellido', 'telefono', 'laptop', 'escuela', 'grado',)
 
 class PersonaAdmin(ImportExportModelAdmin):
 	resource_class = PersonaResource
