@@ -42,6 +42,7 @@ class Componente(models.Model):
 class Incidente(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	descripcion = models.CharField(max_length=30)
+	detalle = models.TextField(default="Detalle")
 	laptop = models.ForeignKey(Laptop, blank=True)
 	componente = models.ManyToManyField(Componente, blank=True)
 
@@ -49,4 +50,4 @@ class Incidente(models.Model):
 		return self.created_at.strftime('%B %d %Y')
 
 	def __str__(self):
-		return '{} {} {} {}'.format(self.created_at, self.descripcion, self.laptop, self.componente)
+		return '{} {} {} {}'.format(self.created_at, self.descripcion, self.detalle, self.laptop, self.componente)

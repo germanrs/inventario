@@ -8,8 +8,10 @@
 	<thead>
 		<tr>
 		    <th>#</th>
+			<th>Feha del reporte</th>
+			<th>Laptop</th>
 			<th>Descripcion</th>
-			<th>XO</th>
+			<th>Detalle</th>
 			<th>Compontes</th>
 		</tr>
 
@@ -19,15 +21,16 @@
 		{% for incidente in object_list %}
 		<tr>
 		    <td>{{ forloop.counter }}</td>
-			<td>{{ incidente.descripcion }}</td>
+		    <td>{{ incidente.created_at|date:"d M Y h:i a" }}</td>
 			<td>{{ incidente.laptop }}</td>
-			<td>{{ incidente.created_at|date:"d M Y h:i a" }}</td>
+			<td>{{ incidente.descripcion }}</td>
+			<td>{{ incidente.detalle }}</td>
 			<td>
 			<ul> {% for componente in incidente.componente.all %}
-			<li>
-				{{componente.nombre}}
-			</li>
-			{% endfor %}
+				<li>
+					{{componente.nombre}}
+				</li>
+			{% endfor %}</ul>
 			</td>
 
 			<td>

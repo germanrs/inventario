@@ -15,22 +15,42 @@ class PersonaForm(forms.ModelForm):
 			'escuela',
 			'grado',
 		]
-
 		labels = {
-			'nombre': 'Nombre:',
-			'apellido': 'Apellido:',
-			'telefono': 'Telefono:',
-			'laptop': 'XO:',
-			'escuela': 'Escuela:',
-			'grado': 'Grado:',
+			'nombre': 'Nombre',
+			'apellido': 'Apellido',
+			'telefono': 'Telefono',
+			'laptop': 'Laptop',
+			'escuela': 'Escuela',
+			'grado': 'Grado',
 		}
 		widgets = {
-			'nombre': forms.TextInput(attrs={'class':'form-control'}),
-			'apellido': forms.TextInput(attrs={'class': 'form-control'}),
-			'telefono': forms.TextInput(attrs={'class': 'form-control'}),
-			'laptop': forms.Select(attrs={'class': 'form-control'}),
-			'escuela': forms.Select(attrs={'class': 'form-control'}),
-			'grado': forms.Select(attrs={'class': 'form-control'}),
+			'nombre': forms.TextInput(
+				attrs={
+				'class':'form-control'
+				}),
+			'apellido': forms.TextInput(
+				attrs={
+				'class': 'form-control'
+				}),
+			'telefono': forms.TextInput(
+				attrs={
+				'class': 'form-control'
+				}),
+			'laptop': forms.Select(
+				attrs={
+				'class': 'selectpicker',
+				'data-live-search':'true'
+				}),
+			'escuela': forms.Select(
+				attrs={
+				'class': 'selectpicker',
+				'data-live-search':'true'
+				}),
+			'grado': forms.Select(
+				attrs={
+				'class': 'selectpicker',
+				'data-live-search':'true'
+				}),
 		}
 
 class EscuelaForm(forms.ModelForm):
