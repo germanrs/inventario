@@ -1,7 +1,6 @@
 from django import forms
 from django.forms import ModelForm
 
-
 from laptop.models import Laptop, Incidente
 
 class LaptopForm(forms.ModelForm):
@@ -32,31 +31,45 @@ class IncidenteForm(forms.ModelForm):
 			'laptop',
 			'detalle',
 			'componente',
+			'tipo_incidente',
+			'prioridad_incidente',
+			'solucion',
+			'estado',
 		]
 		labels = {
 			'descripcion': 'Descripcion',
 			'laptop': 'Laptop',
 			'detalle': 'Detalle',
-			'componente': 'Componente',
+			'componente': 'Componentes',
+			'tipo_incidente': 'Tipo incidente',
+			'prioridad_incidente': 'Prioridad incidente',
+			'solucion': 'Solucion',
+			'estado': 'Raparada',
 		}
 		widgets = {
 			'descripcion': forms.TextInput(attrs={
 				'class':'form-control'
 				}),
-
 			'laptop': forms.Select(attrs={
 				'class': 'selectpicker',
 				'data-live-search':'true'
 				}),
-			'detalle': forms.Textarea(),
-
-			'componente': forms.CheckboxSelectMultiple(),
+			'detalle': forms.Textarea(attrs={
+				'rows': '4',
+				'placeholder': 'Describa los detalles del problema en la laptop.'
+				}),
+			'solucion': forms.Textarea(attrs={
+				'rows': '4',
+				'placeholder': 'Describa los detalles de la repacion realizada a la laptop.'
+				}),			
+			'componente': forms.CheckboxSelectMultiple(attrs={
+				'class': 'column-checkbox'
+				}),
+			'tipo_incidente': forms.Select(attrs={
+				'class': 'form-control'
+				}),
+			'prioridad_incidente': forms.Select(attrs={
+				'class': 'form-control'
+				}),
+			'estado': forms.CheckboxInput(),
 		}
-
-		# widget=SelectMultiple(attrs={
-  #               'class':'form-control selectpicker',
-  #               'multiple data-actions-box':'true',
-  #               'data-live-search':'true',
-  #               'multiple title':'--- Please select ---',
-  #               'multiple data-selected-text-format':'count > 2'
-  #           }),

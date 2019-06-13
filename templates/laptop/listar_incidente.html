@@ -2,52 +2,72 @@
 
 {% block content %}
 
-<a class="btn btn-success btn-xs" href="{% url 'laptop:crear_incidente' %}">Agregar</a>
+<form class="form-inline">
+	<div class="form-group">
+		<a class="btn btn-success btn-xs" href="{% url 'laptop:crear_incidente' %}">Agregar</a>
+	</div>
+</form>
 
-<table class="table table-striped table-hover">
+{% if object_list %}
+<table class="table table-bordered table-hover">
 	<thead>
-		<tr>
-		    <th>#</th>
-			<th>Feha del reporte</th>
-			<th>Laptop</th>
-			<th>Descripcion</th>
-			<th>Detalle</th>
-			<th>Compontes</th>
+		<tr class="info">
+			<th style="text-align:center">#</th>
+			<th style="text-align:center">ID Ticket</th>
+			<th style="text-align:center">Estado</th>
+			<th style="text-align:center">Descripcion</th>			
+			<th style="text-align:center">Fecha reporte</th>
+			<th style="text-align:center">Laptop</th>
+			<th style="text-align:center">Estudiante</th>
+			<th style="text-align:center">Escuela</th>
+			<th style="text-align:center">Grado</th>
+			<th style="text-align:center">Detalle</th>
+			<th style="text-align:center">Tipo</th>
+			<th style="text-align:center">Prioridad</th>
+			<th style="text-align:center">Componentes</th>
+			<th style="text-align:center">Acciones</th>
 		</tr>
-
 	</thead>
-	<tbody>
-		{% if object_list %}
+	
+	<tbody id="myTable">
+	<ol>
 		{% for incidente in object_list %}
 		<tr>
-		    <td>{{ forloop.counter }}</td>
-		    <td>{{ incidente.created_at|date:"d M Y h:i a" }}</td>
-			<td>{{ incidente.laptop }}</td>
-			<td>{{ incidente.descripcion }}</td>
-			<td>{{ incidente.detalle }}</td>
-			<td>
-			<ul> {% for componente in incidente.componente.all %}
-				<li>
+			<td style="text-align:center">{{ forloop.counter }}</td>
+			<td style="text-align:center">{{ incidente.id }}</td>
+			<td style="text-align:center">{{ incidente.estado_incidente_detalle }}</td>
+			<td style="text-align:center">{{ incidente.descripcion}}</td>
+			<td style="text-align:center">{{ incidente.created_at|date:"d M Y" }}</td>
+			<td style="text-align:center">{{ incidente.laptop }}</td>
+			<td style="text-align:center">{{ incidente.laptop.persona.nombre }}</td>
+			<td style="text-align:center">{{ incidente.laptop.persona.escuela }}</td>
+			<td style="text-align:center">{{ incidente.laptop.persona.grado }}</td>
+			<td style="text-align:center">{{ incidente.detalle }}</td>
+			<td style="text-align:center">{{ incidente.tipo_incidente_detalle }}</td>
+			<td style="text-align:center">{{ incidente.prioridad_incidente_detalle }}</td>
+			<td style="text-align:center">
+				{% for componente in incidente.componente.all %}
+				<span class="label label-warning">
 					{{componente.nombre}}
-				</li>
-			{% endfor %}</ul>
+				</span>
+				{% endfor %}
 			</td>
-
-			<td>
-				<a class="btn btn-primary btn-xs" href="{% url 'laptop:editar_incidente' incidente.id %}">Editar</a>
-				<a class="btn btn-danger btn-xs" href="{% url 'laptop:borrar_incidente' incidente.id %}">Eliminar</a>
+			<td align="center">
+				<a class="far fa-edit" data-toggle="tooltip" title="Editar" href="{% url 'laptop:editar_incidente' incidente.id %}"></a>
+				<a class="far fa-trash-alt" data-toggle="tooltip" title="Eliminar" href="{% url 'laptop:borrar_incidente' incidente.id %}"}></i>
 			</td>
 		</tr>
 		{% endfor %}
+	</ol>
 
-		{% else %}
-			<h1>No hay registros de incidentes</h1>
-		{% endif %}
+	{% else %}
+		<h1>No hay registros de laptops</h1>
+	{% endif %}
 	</tbody>
 </table>
 
 {% if is_paginated %}
-  <ul class="pagination">
+  <ul class="pagination pagination-sm">
     {% if page_obj.has_previous %}
       <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
     {% else %}

@@ -40,14 +40,42 @@ class Componente(models.Model):
 		return self.nombre
 
 class Incidente(models.Model):
+	TIPO_INCIDENTE_LAPTOP = (
+		('1', 'Revision'),
+		('2', 'Defecto'),
+		('3', 'Daño'),
+	)
+	PRIORIDAD_INCIDENTE_LAPTOP = (
+		('1', 'Urgente'),
+		('2', 'Mayor'),
+		('3', 'Menor'),
+	)
 	created_at = models.DateTimeField(auto_now_add=True)
 	descripcion = models.CharField(max_length=30)
-	detalle = models.TextField(default="Detalle")
+	detalle = models.TextField()
+	solucion = models.TextField(blank=True)
 	laptop = models.ForeignKey(Laptop, blank=True)
-	componente = models.ManyToManyField(Componente, blank=True)
+	componente = models.ManyToManyField(Componente, blank=False)
+	tipo_incidente = models.CharField(max_length=1, choices=TIPO_INCIDENTE_LAPTOP, default=1)
+	prioridad_incidente = models.CharField(max_length=1, choices=PRIORIDAD_INCIDENTE_LAPTOP, default=3)
+	# True - Reparado
+	# False - Pendiente reparacion
+	estado = models.BooleanField(default=False)
 
 	def f_creacion(self):
 		return self.created_at.strftime('%B %d %Y')
 
 	def __str__(self):
 		return '{} {} {} {}'.format(self.created_at, self.descripcion, self.detalle, self.laptop, self.componente)
+
+	def tipo_incidente_detalle(self):
+		return dict(Incidente.TIPO_INCIDENTE_LAPTOP)[self.tipo_incidente]
+
+	def prioridad_incidente_detalle(self):
+		return dict(Incidente.PRIORIDAD_INCIDENTE_LAPTOP)[self.prioridad_incidente]
+
+	def estado_incidente_detalle(self):
+		if self.estado == True:
+			return 'Reparado'
+		else:
+			return 'Pendiente'
