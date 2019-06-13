@@ -52,7 +52,7 @@ class Incidente(models.Model):
 	)
 	created_at = models.DateTimeField(auto_now_add=True)
 	descripcion = models.CharField(max_length=30)
-	detalle = models.TextField()
+	detalle = models.TextField(blank=True)
 	solucion = models.TextField(blank=True)
 	laptop = models.ForeignKey(Laptop, blank=True)
 	componente = models.ManyToManyField(Componente, blank=False)
