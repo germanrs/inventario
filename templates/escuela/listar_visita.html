@@ -1,24 +1,76 @@
 {% extends 'base/base2.html' %}
 
 {% block content %}
-<div class="starter-template">
-</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
-        <canvas id="myChart" width="400" height="400">
-            <script>
-                $(document).ready(function(){
-                {% block jquery %}{% endblock %}
-                })
-            </script>
-        </canvas>
-        </div>
-        <div class="col-sm-3"></div>
+<form class="form-inline">
+    <div class="form-group">
+        <a class="btn btn-success btn-xs" href="{% url 'escuela:crear_visita' %}">Agregar</a>
     </div>
-</div>
+</form>
 
-</main><!-- /.container -->
-{% endblock content %}
+{% if object_list %}
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr class="info">
+            <th style="text-align:center">#</th>
+            <!-- <th style="text-align:center">ID</th> -->
+            <th style="text-align:center">Titulo</th>
+            <th style="text-align:center">Fecha</th>          
+            <th style="text-align:center">Escuela</th>
+            <th style="text-align:center">Tipo visita</th>
+            <th style="text-align:center">Objetivo</th>
+            <th style="text-align:center">Descripcion</th>
+            <th style="text-align:center">Avances</th>
+            <th style="text-align:center">Acciones</th>
+        </tr>
+    </thead>
+    
+    <tbody id="myTable">
+    <ol>
+        {% for visita in object_list %}
+        <tr>
+            <td style="text-align:center">{{ forloop.counter }}</td>
+            <!-- <td style="text-align:center">{{ visita.id }}</td> -->
+            <td style="text-align:center">{{ visita.titulo }}</td>
+            <td style="text-align:center">{{ visita.fecha}}</td>
+            <td style="text-align:center">{{ visita.escuela }}</td>
+            <td style="text-align:center">{{ visita.visita_detalle}}</td>
+            <td style="text-align:center">{{ visita.objetivo }}</td>
+            <td style="text-align:center">{{ visita.descripcion }}</td>
+            <td style="text-align:center">{{ visita.avances }}</td>
+            <td align="center">
+                <a class="far fa-edit" data-toggle="tooltip" title="Editar" href="{% url 'escuela:editar_visita' visita.id %}"></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </ol>
+
+    {% else %}
+        <h1>No hay registros de visitas</h1>
+    {% endif %}
+    </tbody>
+</table>
+
+{% if is_paginated %}
+  <ul class="pagination pagination-sm">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+{% endblock %}

@@ -113,7 +113,12 @@ class VisitaForm(forms.ModelForm):
 			'escuela': forms.Select(attrs={'class':'form-control'}),
 			'tipo_visita': forms.Select(attrs={'class':'form-control'}),
 			'objetivo': forms.TextInput(attrs={'class':'form-control'}),
-			'descripcion':forms.Textarea(attrs={'class':'form-control'}),
-			'avances': forms.TextInput(attrs={'class':'form-control'}),
-			
+			'descripcion':forms.Textarea(attrs={
+				'rows': '4',
+				'placeholder': 'Describa las actividades realizadas durante la visita.'
+				}),
+			'avances': forms.Textarea(attrs={
+				'rows': '4',
+				'placeholder': 'Describa los avances encontrados en la visita.'
+				}),
 		}

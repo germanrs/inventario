@@ -52,27 +52,48 @@ class EscuelaCrear(CreateView):
 	template_name = 'escuela/crear_escuela.html'
 	success_url = reverse_lazy('escuela:listar_escuela')
 
-#class VisitaListarA(ListView):
-#	model = Visita
-#	template_name = 'escuela/listar_visita.html'
-
 class VisitaCrear(CreateView):
 	model = Visita
 	form_class = VisitaForm
 	template_name = 'escuela/crear_visita.html'
 	success_url = reverse_lazy('escuela:listar_visita')
 
-User = get_user_model()
+class VisitaListar(ListView):
+	model = Visita
+	template_name = 'escuela/listar_visita.html'
 
-class VisitaListarA(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'escuela/listar_visita.html')
+class VisitaEditar(UpdateView):
+	model = Visita
+	form_class = VisitaForm
+	template_name = 'escuela/crear_visita.html'
+	success_url = reverse_lazy('escuela:listar_listar')
+
+class VisitaBorrar(DeleteView):
+	model = Visita
+	template_name = 'escuela/borrar_visita.html'
+	success_url = reverse_lazy('escuela:listar_visita')
+
+User = get_user_model()
 
 class Reporte1(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'escuela/charts.html')
+        return render(request, 'escuela/charts1.html')
 
+class Reporte2(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'escuela/charts2.html')
 
+class Reporte3(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'escuela/charts3.html')	
+
+class Reporte4(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'escuela/charts4.html')
+
+class Reporte5(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'escuela/charts5.html')
 
 class ChartData(APIView):
     authentication_classes = []
@@ -84,12 +105,10 @@ class ChartData(APIView):
         qs_xo_3 = Laptop.objects.filter(modelo=3).count()
         qs_xo_4 = Laptop.objects.filter(modelo=4).count()
         qs_nl3 = Laptop.objects.filter(modelo=5).count()
-
-#        qs_escuela_1 = Persona.objects.filter(escuela='1').count()
-#        qs_escuela_2 = Persona.objects.filter(escuela='2').count()
-#        qs_escuela_3 = Persona.objects.filter(escuela='3').count()
-# 		 qs_count = User.objects.all().count()
-
+#       qs_escuela_1 = Persona.objects.filter(escuela='1').count()
+#       qs_escuela_2 = Persona.objects.filter(escuela='2').count()
+#       qs_escuela_3 = Persona.objects.filter(escuela='3').count()
+# 		qs_count = User.objects.all().count()
         data = {
             "labels": ["XO-1", "XO-1.5", "XO-1.75", "XO-4", "NL3"],
             "data": [qs_xo_1, qs_xo_2, qs_xo_3, qs_xo_4, qs_nl3],

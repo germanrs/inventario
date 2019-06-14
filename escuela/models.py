@@ -72,7 +72,7 @@ class Visita(models.Model):
 		return '{} {} {}'.format(self.fecha, self.titulo, self.escuela, self.tipo_visita, )
 
 	def visita_detalle(self):
-		return dict(tipo_visita.T_VISITA)[self.tipo_visita]
+		return dict(Visita.T_VISITA)[self.tipo_visita]
 
 #class Conectividad(models.Model):
 
