@@ -1,4 +1,5 @@
 # inventario
+```
 git clone https://github.com/germanrs/inventario
 
 cd inventario
@@ -14,3 +15,4 @@ python manage.py migrate
 python manage.py createsuperuser
 
 python manage.py runserver 0.0.0.0:8000
+```
