@@ -14,13 +14,13 @@
         <tr class="info">
             <th style="text-align:center">#</th>
             <!-- <th style="text-align:center">ID</th> -->
-            <th style="text-align:center">Titulo</th>
-            <th style="text-align:center">Fecha</th>          
-            <th style="text-align:center">Escuela</th>
+            <th style="text-align:center">Fecha</th>
             <th style="text-align:center">Tipo visita</th>
+            <th style="text-align:center">Titulo</th>
             <th style="text-align:center">Objetivo</th>
-            <th style="text-align:center">Descripcion</th>
-            <th style="text-align:center">Avances</th>
+            <th style="text-align:center">Escuela</th>
+            <th style="text-align:center">Departamento</th>
+            <th style="text-align:center">Municipio</th>
             <th style="text-align:center">Acciones</th>
         </tr>
     </thead>
@@ -31,13 +31,13 @@
         <tr>
             <td style="text-align:center">{{ forloop.counter }}</td>
             <!-- <td style="text-align:center">{{ visita.id }}</td> -->
-            <td style="text-align:center">{{ visita.titulo }}</td>
             <td style="text-align:center">{{ visita.fecha}}</td>
-            <td style="text-align:center">{{ visita.escuela }}</td>
             <td style="text-align:center">{{ visita.visita_detalle}}</td>
-            <td style="text-align:center">{{ visita.objetivo }}</td>
-            <td style="text-align:center">{{ visita.descripcion }}</td>
-            <td style="text-align:center">{{ visita.avances }}</td>
+            <td>{{ visita.titulo }}</td>
+            <td>{{ visita.objetivo }}</td>
+            <td style="text-align:center">{{ visita.escuela }}</td>
+            <td style="text-align:center">{{ visita.escuela.departamento }}</td>
+            <td style="text-align:center">{{ visita.escuela.municipio }}</td>
             <td align="center">
                 <a class="far fa-sticky-note" data-toggle="tooltip" title="Ver reporte" href="{% url 'escuela:ver_visita' visita.id %}"></a>
                 <a class="far fa-edit" data-toggle="tooltip" title="Editar reporte" href="{% url 'escuela:editar_visita' visita.id %}"></a>
