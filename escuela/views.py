@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse_lazy
 
-from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import View, ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from escuela.forms import PersonaForm, EscuelaForm, VisitaForm
 from escuela.models import Persona, Escuela, Visita
@@ -61,6 +61,10 @@ class VisitaCrear(CreateView):
 class VisitaListar(ListView):
 	model = Visita
 	template_name = 'escuela/listar_visita.html'
+
+class VisitaVer(DetailView):
+	model = Visita
+	template_name = 'escuela/ver_visita.html'
 
 class VisitaEditar(UpdateView):
 	model = Visita

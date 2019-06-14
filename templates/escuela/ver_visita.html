@@ -1,0 +1,84 @@
+{% extends 'base/base2.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Reporte de visita de seguimiento</h3>
+    </div>
+
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <fieldset>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <legend><b>Fecha: </b> <i>{{ object.fecha }}</i></legend>
+                    </div>
+                    <div class="col-sm-3 col-md-offset-6">
+                        <legend><b>ID visita: </b> <i>{{ object.id }}</i></legend>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-3">
+                        <legend><b>Escuela: </b><i>{{ object.escuela }}</i></legend>
+                    </div>
+                    <div class="col-sm-3">
+                        <legend><b>Departamento: </b><i>{{ object.escuela.departamento }}</i></legend>
+                    </div>
+                    <div class="col-sm-3">
+                        <legend><b>Municipio: </b><i>{{ object.escuela.municipio }}</i></legend>
+                    </div>                    
+                    <div class="col-sm-3">
+                        <legend><b>Tipo visita: </b><i>{{ object.visita_detalle }}</i></legend>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <legend><b> Titulo: </b> <i>{{ object.titulo }}</i></legend>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <legend><b>Objetivo: </b> <i>{{ object.objetivo }}</i></legend>
+                    </div>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item">
+                        <h4 class="list-group-item-heading"><b>Descripcion</b></h4>
+                        <p class="list-group-item-text"> {{ object.descripcion}} </p>
+                    </a>
+                </div>
+                <div>                
+                    <a class="list-group-item">
+                        <h4 class="list-group-item-heading"><b>Avances</b></h4>
+                        <p class="list-group-item-text">{{ object.descripcion}}</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-12">
+                    <p>
+                    </p>
+                </div>
+
+                <div>
+                    <a class="btn btn-warning" href="{% url 'escuela:listar_visita' %}" role="button">Regresar</a>
+                    <button class="btn btn-primary" onclick="Imprimir()">Imprimir</button>
+                    <script>
+                        function Imprimir() {
+                            window.print();
+                        }
+                    </script>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

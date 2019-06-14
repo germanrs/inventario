@@ -3,10 +3,8 @@ from django import forms
 from escuela.models import Persona, Escuela, Visita
 
 class PersonaForm(forms.ModelForm):
-
 	class Meta:
 		model = Persona
-
 		fields = [
 			'nombre',
 			'apellido',
@@ -54,10 +52,8 @@ class PersonaForm(forms.ModelForm):
 		}
 
 class EscuelaForm(forms.ModelForm):
-
 	class Meta:
 		model = Escuela
-
 		fields = [
 			'nombre',
 			'departamento',
@@ -65,7 +61,6 @@ class EscuelaForm(forms.ModelForm):
 			'direccion',
 			'telefono',
 		]
-
 		labels = {
 			'nombre': 'Nombre: ',
 			'departamento': 'Departamento',
@@ -73,7 +68,6 @@ class EscuelaForm(forms.ModelForm):
 			'direccion': 'Direccion',
 			'telefono': 'Telefono',
 		}
-
 		widgets = {
 			'nombre': forms.TextInput(attrs={'class':'form-control'}),
 			'departamento': forms.Select(attrs={'class': 'form-control'}),
@@ -83,7 +77,6 @@ class EscuelaForm(forms.ModelForm):
 		}
 
 class VisitaForm(forms.ModelForm):
-
 	class Meta:
 		model = Visita
 
@@ -96,7 +89,6 @@ class VisitaForm(forms.ModelForm):
 			'descripcion',
 			'avances',
 		]
-
 		labels = {
 			'titulo': 'Titulo de la visita',
 			'fecha': 'Fecha de la visita', 
@@ -106,7 +98,6 @@ class VisitaForm(forms.ModelForm):
 			'descripcion': 'Descripcion de la visita',
 			'avances': 'Avances encontrados',
 		}
-
 		widgets = {
 			'titulo':  forms.TextInput(attrs={'class':'form-control'}),
 			'fecha':  forms.DateInput(format='%d/%m/%Y'),
@@ -115,7 +106,7 @@ class VisitaForm(forms.ModelForm):
 			'objetivo': forms.TextInput(attrs={'class':'form-control'}),
 			'descripcion':forms.Textarea(attrs={
 				'rows': '4',
-				'placeholder': 'Describa las actividades realizadas durante la visita.'
+				'placeholder': 'Describa las actividades realizadas durante la visita'
 				}),
 			'avances': forms.Textarea(attrs={
 				'rows': '4',

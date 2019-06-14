@@ -1,7 +1,19 @@
 from django.conf.urls import url, include
 from django.contrib.auth.decorators import login_required
 
-from escuela.views import PersonaListar, PersonaCrear, PersonaEditar, PersonaBorrar, EscuelaListar, EscuelaCrear, VisitaCrear, VisitaListar, VisitaEditar, VisitaBorrar
+from escuela.views import (
+    PersonaListar, 
+    PersonaCrear, 
+    PersonaEditar, 
+    PersonaBorrar, 
+    EscuelaListar, 
+    EscuelaCrear, 
+    VisitaCrear, 
+    VisitaListar, 
+    VisitaEditar, 
+    VisitaBorrar,
+    VisitaVer
+    )
 from escuela.views import ChartData, Reporte1, Reporte2, Reporte3, Reporte4, Reporte5
 from donante.views import DonanteListar, DonanteCrear, DonanteEditar, DonanteBorrar
 
@@ -22,6 +34,9 @@ urlpatterns = [
 
     url(r'^crear_visita/', login_required(VisitaCrear.as_view()), name='crear_visita'),
     url(r'^listar_visita/', login_required(VisitaListar.as_view()), name='listar_visita'),
+    
+    url(r'^ver_visita/(?P<pk>\d+)/$', login_required(VisitaVer.as_view()), name='ver_visita'),
+
     url(r'^editar_visita/(?P<pk>\d+)/$', login_required(VisitaEditar.as_view()), name='editar_visita'),
     url(r'^borrar_visita/(?P<pk>\d+)/$', login_required(VisitaBorrar.as_view()), name='borrar_visita'),
 

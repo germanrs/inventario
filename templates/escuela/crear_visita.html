@@ -34,7 +34,6 @@
 				<div class="col-sm-5">
 					{{ form.tipo_visita|as_crispy_field }}
 				</div>
-
 			</div>	
 
 			<div class="row">
@@ -62,15 +61,14 @@
 			</div>			
 
 			<div class="form-group">
-				<div>
-					<button type="reset" class="btn btn-default">Limpiar</button>
-					<a class= "btn btn-warning" href="{% url 'escuela:listar_visita' %}">Cancelar</a>
-					<button type="submit" class="btn btn-primary">Guardar</button>
-				</div>
+				<!-- <button type="reset" class="btn btn-default">Limpiar</button> -->
+				<a class= "btn btn-warning" href="{% url 'escuela:listar_visita' %}">Cancelar</a>
+				<button type="submit" class="btn btn-primary">Guardar</button>
 			</div>			
 
 		</fieldset>
 		</form>
+		</form>
+	</div>
 </div>
-
 {% endblock %}

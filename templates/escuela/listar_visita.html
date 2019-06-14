@@ -39,7 +39,8 @@
             <td style="text-align:center">{{ visita.descripcion }}</td>
             <td style="text-align:center">{{ visita.avances }}</td>
             <td align="center">
-                <a class="far fa-edit" data-toggle="tooltip" title="Editar" href="{% url 'escuela:editar_visita' visita.id %}"></a>
+                <a class="far fa-sticky-note" data-toggle="tooltip" title="Ver reporte" href="{% url 'escuela:ver_visita' visita.id %}"></a>
+                <a class="far fa-edit" data-toggle="tooltip" title="Editar reporte" href="{% url 'escuela:editar_visita' visita.id %}"></a>
             </td>
         </tr>
         {% endfor %}
