@@ -15,7 +15,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from django.contrib.auth import get_user_model
-from laptop.models import Laptop
+from laptop.models import Laptop, Incidente
 
 # Create your views here.
 class PersonaListar(ListView):
@@ -118,3 +118,68 @@ class ChartData(APIView):
             "data": [qs_xo_1, qs_xo_2, qs_xo_3, qs_xo_4, qs_nl3],
         }
         return Response(data)
+
+class IncidentesData1(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        qs_incidentes_reparado = Incidente.objects.filter(estado=True).count()
+        qs_incidentes_pendiente = Incidente.objects.filter(estado=False).count()
+# 		qs_nl3 = Laptop.objects.filter(modelo=5).count()
+#       qs_escuela_1 = Persona.objects.filter(escuela='1').count()
+#       qs_escuela_2 = Persona.objects.filter(escuela='2').count()
+#       qs_escuela_3 = Persona.objects.filter(escuela='3').count()
+# 		qs_count = User.objects.all().count()
+        data_1 = {
+            "labels": ["Reparados", "Pendientes"],
+            "data": [qs_incidentes_reparado, qs_incidentes_pendiente],
+        }
+        return Response(data_1)
+
+class IncidentesData2(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        qs_incidente_tipo_1 = Incidente.objects.filter(tipo_incidente=1).count()
+        qs_incidente_tipo_2 = Incidente.objects.filter(tipo_incidente=2).count()
+        qs_incidente_tipo_3 = Incidente.objects.filter(tipo_incidente=3).count()
+
+        data_2 = {
+            "labels": ["Revision", "Defecto", "Daño"],
+            "data": [qs_incidente_tipo_1, qs_incidente_tipo_2, qs_incidente_tipo_3],
+        }
+        return Response(data_2)
+
+class IncidentesData3(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        qs_incidente_componente_1 = Incidente.objects.filter(componente=1).count()
+        qs_incidente_componente_2 = Incidente.objects.filter(componente=2).count()
+        qs_incidente_componente_3 = Incidente.objects.filter(componente=3).count()
+        qs_incidente_componente_4 = Incidente.objects.filter(componente=4).count()
+        qs_incidente_componente_5 = Incidente.objects.filter(componente=5).count()
+        qs_incidente_componente_6 = Incidente.objects.filter(componente=6).count()
+
+        data_3 = {
+            "labels": [
+            	"Pantalla", 
+            	"Teclado", 
+            	"Bateria",
+            	"Antena",
+            	"Touchpad",
+            	"Tarjeta madre"
+            	],
+            "data": [
+            	qs_incidente_componente_1, 
+            	qs_incidente_componente_2, 
+            	qs_incidente_componente_3,
+            	qs_incidente_componente_4,
+            	qs_incidente_componente_5,
+            	qs_incidente_componente_6
+            	],
+        }
+        return Response(data_3)

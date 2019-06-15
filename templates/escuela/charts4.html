@@ -2,7 +2,7 @@
 
 <script>
   {% block jquery %}
-  var endpoint = 'api/chart/data'
+  var endpoint = 'api/chart/incidentes_data3'
 
   $.ajax({
     method: "GET",
@@ -10,7 +10,7 @@
     success: function(data){
       var ctx = document.getElementById("myChart").getContext('2d');
       var myChart = new Chart(ctx, {
-          type: 'pie',
+          type: 'bar',
           data: {
               labels: data.labels,
               datasets: [{
@@ -39,7 +39,7 @@
             reponsive: true,
             title: {
               display: true,
-              text: 'Reporte 4'
+              text: 'Distribucion de componentes en incidentes'
             }
           }
       });

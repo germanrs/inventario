@@ -14,7 +14,10 @@ from escuela.views import (
     VisitaBorrar,
     VisitaVer
     )
-from escuela.views import ChartData, Reporte1, Reporte2, Reporte3, Reporte4, Reporte5
+from escuela.views import (
+    ChartData, IncidentesData1, IncidentesData2, IncidentesData3, Reporte1, Reporte2, 
+    Reporte3, Reporte4, 
+    Reporte5)
 from donante.views import DonanteListar, DonanteCrear, DonanteEditar, DonanteBorrar
 
 urlpatterns = [
@@ -41,6 +44,9 @@ urlpatterns = [
     url(r'^borrar_visita/(?P<pk>\d+)/$', login_required(VisitaBorrar.as_view()), name='borrar_visita'),
 
     url(r'^api/chart/data/', ChartData.as_view()),
+    url(r'^api/chart/incidentes_data1/', IncidentesData1.as_view()),
+    url(r'^api/chart/incidentes_data2/', IncidentesData2.as_view()),
+    url(r'^api/chart/incidentes_data3/', IncidentesData3.as_view()),
     url(r'^reporte1', Reporte1.as_view(), name='reporte1'),
     url(r'^reporte2', Reporte2.as_view(), name='reporte2'),
     url(r'^reporte3', Reporte3.as_view(), name='reporte3'),
