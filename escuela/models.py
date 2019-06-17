@@ -9,23 +9,23 @@ from donante.models import Donante
 
 # Create your models here.
 class Departamento(models.Model):
-	nombre = models.CharField(max_length=30)
+	nombre = models.CharField(max_length=50)
 
 	def __str__(self):
 		return self.nombre
 
 class Municipio(models.Model):
-	nombre = models.CharField(max_length=30)
+	nombre = models.CharField(max_length=50)
 
 	def __str__(self):
 		return self.nombre
 
 class Escuela(models.Model):
-	nombre = models.CharField(max_length=30)
+	nombre = models.CharField(max_length=50)
 	departamento = models.ForeignKey(Departamento, null=True, blank=True, on_delete=models.CASCADE)
 	municipio = models.ForeignKey(Municipio, null=True, blank=True, on_delete=models.CASCADE)
-	direccion = models.CharField(max_length=30)
-	telefono = models.CharField(max_length=10)
+	direccion = models.CharField(max_length=90)
+	telefono = models.CharField(max_length=10, blank=True)
 	donante = models.ForeignKey(Donante, null=True, blank=True, on_delete=models.CASCADE)
 
 	def __str__(self):
@@ -44,9 +44,9 @@ class Persona(models.Model):
 		('P', 'Director'),
 		('V', 'Voluntario'),
 	)
-	nombre = models.CharField(max_length=30)
-	apellido = models.CharField(max_length=30)
-	telefono = models.CharField(max_length=10)
+	nombre = models.CharField(max_length=50)
+	apellido = models.CharField(max_length=50)
+	telefono = models.CharField(max_length=10, blank=True)
 	laptop = models.OneToOneField(Laptop,null=True, blank=True, on_delete=models.CASCADE)
 	escuela = models.ForeignKey(Escuela,null=True, blank=True, on_delete=models.CASCADE)
 	grado = models.CharField(max_length=1, choices=ROL_E, blank=True)
@@ -63,13 +63,13 @@ class Visita(models.Model):
 		('2', 'Tecnico'),
 		('3', 'Logistico'),
 		)
-	titulo = models.CharField(max_length=30)
+	titulo = models.CharField(max_length=90)
 	fecha = models.DateField()
 	escuela = models.ForeignKey(Escuela, null=True, blank=False, on_delete=models.CASCADE)
 	tipo_visita = models.CharField(max_length=1, choices=T_VISITA, blank=False)
-	objetivo = models.CharField(max_length=30)
+	objetivo = models.CharField(max_length=90)
 	descripcion = models.CharField(max_length=250)
-	avances = models.CharField(max_length=100)
+	avances = models.CharField(max_length=250)
 
 	def __str__(self):
 		return '{} {} {}'.format(self.fecha, self.titulo, self.escuela, self.tipo_visita, )

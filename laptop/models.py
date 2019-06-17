@@ -51,7 +51,7 @@ class Incidente(models.Model):
 		('3', 'Menor'),
 	)
 	created_at = models.DateTimeField(auto_now_add=True)
-	descripcion = models.CharField(max_length=30)
+	descripcion = models.CharField(max_length=50)
 	detalle = models.TextField(blank=True)
 	solucion = models.TextField(blank=True)
 	laptop = models.ForeignKey(Laptop, blank=True)
