@@ -12,17 +12,17 @@ class DonanteForm(forms.ModelForm):
 			'direccion',
 			'telefono',
 			'email',
-			'escuela',
-			'donacion',
+			# 'escuela',
+			# 'donacion',
 		]
 
 		labels = {
 			'nombre': 'Nombre',
 			'direccion': 'Direccion',
 			'telefono': 'Telefono',
-			'email': 'Email',
-			'escuela': 'Escuela',
-			'donacion': 'Donacion'
+			'email': 'Email'
+			# 'escuela': 'Escuela',
+			# 'donacion': 'Donacion'
 		}
 
 		widgets = {
@@ -30,6 +30,6 @@ class DonanteForm(forms.ModelForm):
 			'direccion': forms.TextInput(attrs={'class': 'form-control'}),
 			'telefono': forms.TextInput(attrs={'class': 'form-control'}),
 			'email': forms.TextInput(attrs={'class': 'form-control'}),
-			'escuela': forms.Select(attrs={'class': 'form-control'}),
-			'donacion': forms.TextInput(attrs={'class': 'form-control'}),
+			# 'escuela': forms.Select(attrs={'class': 'form-control'}),
+			# 'donacion': forms.TextInput(attrs={'class': 'form-control'}),
 		}

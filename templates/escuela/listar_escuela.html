@@ -1,6 +1,7 @@
 {% extends 'base/base2.html' %}
 
 {% block content %}
+
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -29,12 +30,13 @@ $(document).ready(function(){
 			<th style="text-align:center">Municipio</th>
 			<th style="text-align:center">Direccion</th>
 			<th style="text-align:center">Telefono</th>
+			<th style="text-align:center">Donante</th>
 			<th style="text-align:center">Acciones</th>
 		</tr>
 	</thead>
 	<tbody id="myTable">
 		<ol>
-			{% for escuela in object_list %}
+		{% for escuela in object_list %}
 			<tr>
 				<td style="text-align:center">{{ forloop.counter }}</td>
 				<td style="text-align:center">{{ escuela.nombre }}</td>
@@ -42,6 +44,7 @@ $(document).ready(function(){
 				<td style="text-align:center">{{ escuela.municipio }}</td>
 				<td style="text-align:center">{{ escuela.direccion }}</td>
 				<td style="text-align:center">{{ escuela.telefono }}</td>
+				<td style="text-align:center">{{ escuela.donante }}</td>
 				<td align="center">
 					<a class="btn btn-primary btn-xs" href="/admin/escuela">Editar</a>
 				</td>
@@ -50,7 +53,7 @@ $(document).ready(function(){
 		</ol>
 
 		{% else %}
-			<h1>No hay registros de personas</h1>
+			<h1>No hay registros de Escuelas</h1>
 		{% endif %}
 	</tbody>
 </table>
@@ -78,3 +81,10 @@ $(document).ready(function(){
 {% endif %}
 
 {% endblock %}
+
+
+
+
+
+
+

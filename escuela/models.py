@@ -5,6 +5,8 @@ from django.db import models
 
 from laptop.models import Laptop
 
+from donante.models import Donante
+
 # Create your models here.
 class Departamento(models.Model):
 	nombre = models.CharField(max_length=30)
@@ -24,6 +26,7 @@ class Escuela(models.Model):
 	municipio = models.ForeignKey(Municipio, null=True, blank=True, on_delete=models.CASCADE)
 	direccion = models.CharField(max_length=30)
 	telefono = models.CharField(max_length=10)
+	donante = models.ForeignKey(Donante, null=True, blank=True, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.nombre

@@ -2,6 +2,8 @@ from django import forms
 
 from escuela.models import Persona, Escuela, Visita
 
+from donante.models import Donante
+
 class PersonaForm(forms.ModelForm):
 	class Meta:
 		model = Persona
@@ -60,6 +62,7 @@ class EscuelaForm(forms.ModelForm):
 			'municipio',
 			'direccion',
 			'telefono',
+			'donante',
 		]
 		labels = {
 			'nombre': 'Nombre: ',
@@ -67,6 +70,7 @@ class EscuelaForm(forms.ModelForm):
 			'municipio': 'Municipio',
 			'direccion': 'Direccion',
 			'telefono': 'Telefono',
+			'donante': 'Donante',
 		}
 		widgets = {
 			'nombre': forms.TextInput(attrs={'class':'form-control'}),
@@ -74,6 +78,7 @@ class EscuelaForm(forms.ModelForm):
 			'municipio': forms.Select(attrs={'class': 'form-control'}),
 			'direccion': forms.TextInput(attrs={'class':'form-control'}),
 			'telefono': forms.TextInput(attrs={'class':'form-control'}),
+			'donante': forms.Select(attrs={'class': 'form-control'}),
 		}
 
 class VisitaForm(forms.ModelForm):
